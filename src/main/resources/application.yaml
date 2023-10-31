@@ -1,0 +1,6 @@
+micronaut:
+  application:
+    name: quizmasterdeluxe
+  router:
+    static-resources:
+      default: classpath:static

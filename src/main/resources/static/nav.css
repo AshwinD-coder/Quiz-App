@@ -1,0 +1,48 @@
+.upper-nav{
+    color: black;
+}
+.upper-nav li{
+    float: left;
+    list-style-type: none;
+    font-weight: 800px;
+    margin-right: 40px;
+}
+#outer-nav{
+    padding: 20px 50px;
+    position:sticky;
+    top: 0px;
+    left: 0px;
+    z-index: 999;
+    background-color: white;
+
+}
+#inner-nav{
+
+}
+#inner-nav > div{
+    float: left;
+
+}
+#nav-links {
+    width: 58%;
+}
+
+#nav-links li{
+    float:left;
+    list-style-type: none;
+    font-weight: 600;
+    padding: 0px 23px;
+    text-align: center;
+    font-size: 13px;
+    margin-top: 13px;
+    cursor: pointer;
+}
+
+#booking-now button{
+    background-color: #00AEEF;
+    color: white;
+    padding: 8px 15px;
+    border:none;
+    font-weight: 600;
+    font-size: 12px;
+ }

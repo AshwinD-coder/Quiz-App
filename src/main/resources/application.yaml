@@ -3,4 +3,5 @@ micronaut:
     name: quizmasterdeluxe
   router:
     static-resources:
-      default: classpath:static
+      paths: /static/**
+      enabled: true

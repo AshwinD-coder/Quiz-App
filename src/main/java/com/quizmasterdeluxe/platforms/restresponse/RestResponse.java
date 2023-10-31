@@ -1,4 +1,4 @@
-package com.quizmasterdeluxe.platform.restresponse;
+package com.quizmasterdeluxe.platforms.restresponse;
 
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.serde.annotation.Serdeable;

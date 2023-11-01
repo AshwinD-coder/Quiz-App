@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quiz Master Deluxe - Start Quiz</title>
+    <link rel="stylesheet" href="/static/nav.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<body>
+ <header>
+     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm">
+         <h5 class="my-0 mr-md-auto font-weight-normal">Quiz Master Deluxe</h5>
+         <nav class="my-2 my-md-0 mr-md-3">
+             <a class="p-2 text-dark" href="/landing-page">Home</a>
+         </nav>
+         <div class = 'username' >Welcome {{name}}</div>
+     </div>
+ </header>
+ <div class="container text-center">
+     <div class="row justify-content-md-center">
+     <h5><span id="demo" style="font-family:sans-serif;"></span></h5>
+ </div>
+ </div>
+     <script>
+         var countDownTime = new Date().getTime();
+         countDownTime += 1*60*1000;
+
+         var x = setInterval(renderTime, 1000);
+         function renderTime() {
+
+         var now = new Date().getTime();
+         var timeDifference = countDownTime - now;
+
+         var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+         var seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+         document.getElementById("demo").innerHTML ="TIMER: "+minutes + "m " + seconds + "s ";
+
+         if (timeDifference < 0) {
+           clearInterval(x);
+           alert("Time's Up!");
+           document.getElementById("demo").innerHTML = "Time expired";
+           var button = document.getElementById("submit");
+           button.click();
+         }
+       }
+     </script>
+ <div class="container text-center">
+     <div class="row">
+         <div class="col-sm-5 col-md-6">
+             <h5>Selected Category:</h5>
+         </div>
+         <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0"><h5>Difficulty Level:</h5></div>
+     </div>
+     <div class="row">
+         <div class="col-sm-6 col-md-5 col-lg-6"><h3>{{category}}</h3></div>
+         <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0"><h3>{{difficulty}}</h3></div>
+     </div>
+ </div>
+ <div class="container">
+     <div class="row">
+         <div class="col-md-6 mx-auto">
+             <form action="/quiz-result" method="post" id="quizForm">
+                 {{#each resultsList}}
+                     <div class="card mt-4">
+                         <div class="card-header">
+                             <h5>{{{this.question}}}</h5>
+                         </div>
+                         <div class="card-body">
+                             {{#each this.answers}}
+                                 <div class="d-flex justify-content-around">
+                                     <div class="form-check">
+                                         <input class="form-check-input" type="radio" name="answer{{@index}}" id="option{{@index}}" value="{{this}}">
+                                         <label class="form-check-label" for="option{{@index}}">
+                                             {{{this}}}
+                                         </label>
+                                     </div>
+                                 </div>
+                             {{/each}}
+                         </div>
+                     </div>
+                 {{/each}}
+                 <button type="submit" id="submit" class="btn btn-primary mt-3">Submit</button>
+             </form>
+         </div>
+     </div>
+ </div>
+
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+</html>

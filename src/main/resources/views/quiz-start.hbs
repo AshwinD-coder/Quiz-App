@@ -8,28 +8,24 @@
     <title>Quiz Master Deluxe - Start Quiz</title>
     <link rel="stylesheet" href="/static/nav.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
 </head>
 
 <body>
- <header>
-     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm">
+
+     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm fixed-top">
          <h5 class="my-0 mr-md-auto font-weight-normal">Quiz Master Deluxe</h5>
-         <nav class="my-2 my-md-0 mr-md-3">
-             <a class="p-2 text-dark" href="/landing-page">Home</a>
+         <nav class="my-2 my-md-0 mr-md-3 ">
+             <a class="p-2 text-dark" href="/">Home</a>
          </nav>
          <div class = 'username' >Welcome {{name}}</div>
      </div>
- </header>
- <div class="container text-center">
-     <div class="row justify-content-md-center">
-     <h5><span id="demo" style="font-family:sans-serif;"></span></h5>
- </div>
- </div>
+     <div class="container text-center">
+         <div class="row justify-content-md-center mt-4  fixed-top col-md-6" style="margin-left:275px;">
+             <h5><span id="demo" style="font-family:sans-serif; "></span></h5>
+         </div>
+     </div>
      <script>
-         var countDownTime = new Date().getTime();
-         countDownTime += 5*60*1000;
-
+         var countDownTime = new Date().getTime() + 5*60*1005;
          var x = setInterval(renderTime, 1000);
          function renderTime() {
 
@@ -50,7 +46,9 @@
          }
        }
      </script>
- <div class="container text-center">
+
+
+ <div class="container text-center" style="margin-top:70px;">
      <div class="row">
          <div class="col-sm-5 col-md-6">
              <h5>Selected Category:</h5>
@@ -69,7 +67,8 @@
                  <div class="col-md-6 mx-auto">
                      <div class="card mt-4">
                          <div class="card-header">
-                             <h5>{{{this.question}}}</h5>
+                             <h5>
+                                 {{@index}}.{{{this.question}}}</h5>
                          </div>
                          <div class="card-body">
                              {{#each this.answers}}
@@ -83,7 +82,7 @@
                  </div>
              </div>
          {{/each}}
-         <button type="submit" class="btn btn-primary mt-3">Submit</button>
+         <button type="submit" class="btn btn-primary mt-4 mb-4" id="submit" style="margin-left:525px;" >Submit</button>
      </form>
  </div>
 

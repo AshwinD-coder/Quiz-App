@@ -7,7 +7,7 @@ import io.micronaut.views.View;
 
 @Controller("/")
 public class LandingPageController {
-    @View("index")
+    @View("landing-page")
     @Get("/")
     public HttpResponse<?> index()  {
         return  HttpResponse.ok();

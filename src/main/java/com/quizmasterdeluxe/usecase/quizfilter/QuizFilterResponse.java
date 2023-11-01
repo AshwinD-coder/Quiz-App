@@ -3,9 +3,6 @@ package com.quizmasterdeluxe.usecase.quizfilter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class QuizFilterResponse {
@@ -14,6 +11,8 @@ public class QuizFilterResponse {
 
     @JsonIgnoreProperties("name")
     private String name;
+
+
     @JsonProperty("response_code")
     private int responseCode;
 

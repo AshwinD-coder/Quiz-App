@@ -29,9 +29,8 @@ public class QuizFilterController {
     @Post("/start")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public ModelAndView<QuizFilterResponse> getQuestionsAndRenderTemplate(@Body QuizFilterRequest quizFilterRequest){
-        System.out.println(quizFilterRequest);
         QuizFilterResponse response = quizFilterUseCase.execute(quizFilterRequest);
-        return new ModelAndView<>("quiz",response);
+        return new ModelAndView<>("quiz-start",response);
     }
 
 

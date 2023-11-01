@@ -8,6 +8,16 @@
     <title>Document</title>
 </head>
 <body>
+{{name}}
+{{responseCode}}
 
+{{#each resultsList}}
+    <h2>{{{this.question}}}</h2>
+    <ul>
+        {{#each this.answers}}
+            <li>{{{this}}}</li>
+        {{/each}}
+    </ul>
+{{/each}}
 </body>
 </html>

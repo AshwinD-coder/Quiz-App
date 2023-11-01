@@ -1,4 +1,4 @@
-package com.quizmasterdeluxe.platforms.usecase;
+package com.quizmasterdeluxe.platform.usecase;
 
 import java.util.Optional;
 

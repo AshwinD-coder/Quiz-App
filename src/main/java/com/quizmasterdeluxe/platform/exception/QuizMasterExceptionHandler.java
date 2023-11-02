@@ -14,6 +14,6 @@ import jakarta.inject.Singleton;
 public class QuizMasterExceptionHandler implements ExceptionHandler<QuizMasterException, HttpResponse<Object>> {
     @Override
     public HttpResponse<Object> handle(HttpRequest request, QuizMasterException exception) {
-        return HttpResponse.badRequest().body(RestResponse.error(exception.getType().getCode(),exception.getMessage()));
+        return HttpResponse.badRequest().body(RestResponse.error(exception.getType().getCode(),exception.getType().getMessage()));
     }
 }

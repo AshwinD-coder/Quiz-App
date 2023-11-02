@@ -3,6 +3,7 @@ package com.quizmasterdeluxe.platform.exception;
 public class QuizMasterException extends RuntimeException{
     QuizMasterExceptionType type;
 
+
     public QuizMasterExceptionType getType() {
         return type;
     }

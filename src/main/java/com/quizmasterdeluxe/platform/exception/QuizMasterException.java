@@ -14,6 +14,7 @@ public class QuizMasterException extends RuntimeException{
 
     public QuizMasterException(QuizMasterExceptionType type) {
         super(type.getMessage());
+        this.type=type;
 
     }
 }

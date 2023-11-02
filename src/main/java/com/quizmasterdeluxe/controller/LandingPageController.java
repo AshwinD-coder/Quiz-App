@@ -10,7 +10,7 @@ import io.micronaut.views.View;
 public class LandingPageController {
     @View()
     @Get()
-    public ModelAndView index()  {
+    public ModelAndView renderingLandingPage()  {
         return  new ModelAndView("landing-page",null);
     }
 }

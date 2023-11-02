@@ -7,7 +7,10 @@ import com.quizmasterdeluxe.usecase.quizresult.QuizResultResponse;
 import com.quizmasterdeluxe.usecase.quizresult.QuizResultUseCase;
 import io.micronaut.core.annotation.Nullable;
 import io.micronaut.http.MediaType;
-import io.micronaut.http.annotation.*;
+import io.micronaut.http.annotation.Body;
+import io.micronaut.http.annotation.Consumes;
+import io.micronaut.http.annotation.Controller;
+import io.micronaut.http.annotation.Post;
 import io.micronaut.views.ModelAndView;
 import jakarta.inject.Inject;
 

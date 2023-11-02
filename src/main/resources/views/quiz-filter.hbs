@@ -30,11 +30,10 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <form action="/quiz-filter/start" method="post">
-                    <div class="form-group">
-                        <label for="name" class="form-label">Enter your name</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your Name" required>
-                    </div>
-
+                     <div class="form-group">
+                         <label for="name" class="form-label">Enter your name (Alphabetical characters only)</label>
+                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter your Name" pattern="[A-Za-z\s]+" title="Only alphabetical characters are allowed." required>
+                     </div>
                     <div class="form-group">
                         <label for="category" class="form-label">Select Category</label>
                         <select class="form-control" name="category" id="category" required>

@@ -4,6 +4,7 @@ import com.quizmasterdeluxe.platform.quizholder.QuizResultHolder;
 import com.quizmasterdeluxe.platform.quizholder.TemporaryHolder;
 import com.quizmasterdeluxe.usecase.quizfilter.QuizFilterResult;
 import com.quizmasterdeluxe.usecase.quizfilter.QuizFilterUseCase;
+import jakarta.inject.Inject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +13,9 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class QuizResultUseCaseTest {
+    @Inject
     private TemporaryHolder temporaryHolder;
+    @Inject
     private QuizResultUseCase quizResultUseCase;
 
     @BeforeEach
@@ -20,7 +23,6 @@ class QuizResultUseCaseTest {
         temporaryHolder = new TemporaryHolder();
         quizResultUseCase = new QuizResultUseCase(new QuizFilterUseCase());
     }
-
     @Test
     public void shouldExecuteAllCorrectAnswers() {
         temporaryHolder.set(createMockQuizResultHolder());

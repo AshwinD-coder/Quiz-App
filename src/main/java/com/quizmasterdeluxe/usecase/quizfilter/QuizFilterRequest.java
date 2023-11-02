@@ -15,6 +15,9 @@ public class QuizFilterRequest implements UseCaseRequest {
     private String difficulty;
     @JsonProperty("category")
     private String category;
+
+
+
     public String getName() {
         return name;
     }
@@ -38,6 +41,15 @@ public class QuizFilterRequest implements UseCaseRequest {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public QuizFilterRequest(String name, String difficulty, String category) {
+        this.name = name;
+        this.difficulty = difficulty;
+        this.category = category;
+    }
+
+    public QuizFilterRequest() {
     }
 
     @Override

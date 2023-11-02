@@ -29,4 +29,26 @@ class QuizFilterUseCaseTest {
         Assertions.assertEquals(0,response.get().getResponseCode());
     }
 
+    @Test
+    void shouldGetQuestionWithCorrectDifficultyLevelEasy(){
+        QuizFilterRequest request = new QuizFilterRequest("dipendra", "easy","9");
+        Optional<QuizFilterResponse> response = quizFilterUseCase.execute(request);
+        assertTrue(response.isPresent());
+        Assertions.assertEquals("easy",response.get().getResultsList().get(0).getDifficulty());
+    }
+    @Test
+    void shouldGetQuestionWithCorrectDifficultyLevelMedium(){
+        QuizFilterRequest request = new QuizFilterRequest("dipendra", "medium","9");
+        Optional<QuizFilterResponse> response = quizFilterUseCase.execute(request);
+        assertTrue(response.isPresent());
+        Assertions.assertEquals("medium",response.get().getResultsList().get(0).getDifficulty());
+    }
+    @Test
+    void shouldGetQuestionWithCorrectDifficultyLevelHard(){
+        QuizFilterRequest request = new QuizFilterRequest("dipendra", "hard","9");
+        Optional<QuizFilterResponse> response = quizFilterUseCase.execute(request);
+        assertTrue(response.isPresent());
+        Assertions.assertEquals("hard",response.get().getResultsList().get(0).getDifficulty());
+    }
+
 }

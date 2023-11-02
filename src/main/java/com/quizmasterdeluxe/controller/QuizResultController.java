@@ -31,11 +31,12 @@ public class QuizResultController {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public ModelAndView<QuizResultResponse> quizResult(@Body @Nullable Map<String,String> userQuestionsAnswers)
     {
-        QuizResultRequest quizResultRequest = MapToQuizResultRequest.toQuizResultRequest(userQuestionsAnswers);
-        if(quizResultRequest == null)
+        if(userQuestionsAnswers == null)
         {
             throw new QuizMasterException(QuizMasterExceptionType.ATLEAST_ONE_ANSWER);
         }
+        QuizResultRequest quizResultRequest = MapToQuizResultRequest.toQuizResultRequest(userQuestionsAnswers);
+
 
         QuizResultResponse response = quizResultUseCase.execute(quizResultRequest).get();
 
@@ -44,7 +45,6 @@ public class QuizResultController {
 
     @Get("/error/")
     public ModelAndView error(@QueryValue("errorCode") String errorCode, @QueryValue("errorMessage") String errorMessage) {
-        System.out.println("hello");
         Map<String, Object> errorModel = new HashMap<>();
         errorModel.put("errorCode", errorCode);
         errorModel.put("errorMessage", errorMessage);

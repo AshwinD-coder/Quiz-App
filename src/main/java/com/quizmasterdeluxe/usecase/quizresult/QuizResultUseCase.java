@@ -1,14 +1,17 @@
 package com.quizmasterdeluxe.usecase.quizresult;
 
 
+import com.quizmasterdeluxe.platform.usecase.UseCase;
+import com.quizmasterdeluxe.usecase.quizfilter.QuizFilterResponse;
 import com.quizmasterdeluxe.usecase.quizfilter.QuizFilterResult;
 import com.quizmasterdeluxe.usecase.quizfilter.QuizFilterUseCase;
 import jakarta.inject.Inject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
-public class QuizResultUseCase {
+public class QuizResultUseCase implements UseCase<QuizResultRequest, QuizResultResponse> {
 
     private final QuizFilterUseCase quizFilterUseCase;
 
@@ -17,7 +20,8 @@ public class QuizResultUseCase {
         this.quizFilterUseCase = quizFilterUseCase;
     }
 
-    public QuizResultResponse execute(Map<String, String> quizResultRequest) {
+    @Override
+    public Optional<QuizResultResponse> execute(QuizResultRequest quizResultRequest) {
         Map<String, String> systemQuizResult = prepareSystemQuizResult();
 
         int score = 0;
@@ -27,8 +31,7 @@ public class QuizResultUseCase {
         for (Map.Entry<String, String> entry : systemQuizResult.entrySet()) {
             String question = entry.getKey();
             String correctAnswer = entry.getValue();
-            String userAnswer = quizResultRequest.get(question);
-
+            String userAnswer = quizResultRequest.getQuestionAnswer().get(question);
             if (correctAnswer.equals(userAnswer)) {
                 score++;
                 playerCorrectAnswer.put(question, correctAnswer);
@@ -37,7 +40,7 @@ public class QuizResultUseCase {
             }
         }
 
-        return buildQuizResultResponse(score, playerCorrectAnswer, playerWrongAnswer);
+        return Optional.of(buildQuizResultResponse(score, playerCorrectAnswer, playerWrongAnswer));
     }
 
     private Map<String, String> prepareSystemQuizResult() {

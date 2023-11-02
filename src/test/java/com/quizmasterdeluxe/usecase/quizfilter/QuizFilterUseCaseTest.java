@@ -50,5 +50,45 @@ class QuizFilterUseCaseTest {
         assertTrue(response.isPresent());
         Assertions.assertEquals("hard",response.get().getResultsList().get(0).getDifficulty());
     }
+    @Test
+    void shouldGetQuestionWithCorrectCategoryGeneralKnowledge(){
+        QuizFilterRequest request = new QuizFilterRequest("Sandesh", "hard","9");
+        Optional<QuizFilterResponse> response = quizFilterUseCase.execute(request);
+        assertTrue(response.isPresent());
+        Assertions.assertEquals("General Knowledge",response.get().getResultsList().get(0).getCategory());
+    }
+    @Test
+    void shouldGetQuestionWithCorrectCategoryComputerScience(){
+        QuizFilterRequest request = new QuizFilterRequest("Sandesh", "hard","18");
+        Optional<QuizFilterResponse> response = quizFilterUseCase.execute(request);
+        assertTrue(response.isPresent());
+        Assertions.assertEquals("Science: Computers",response.get().getResultsList().get(0).getCategory());
+    }
+
+    @Test
+    void shouldGetQuestionWithCorrectCategoryEntertainmentJapaneseAnimeAndManga(){
+        QuizFilterRequest request = new QuizFilterRequest("Sandesh", "hard","31");
+        Optional<QuizFilterResponse> response = quizFilterUseCase.execute(request);
+        assertTrue(response.isPresent());
+        Assertions.assertEquals("Entertainment: Japanese Anime & Manga",response.get().getResultsList().get(0).getCategory());
+    }
+
+    @Test
+    void shouldGetQuestionWithCorrectCategoryGeography(){
+        QuizFilterRequest request = new QuizFilterRequest("Sandesh", "hard","22");
+        Optional<QuizFilterResponse> response = quizFilterUseCase.execute(request);
+        assertTrue(response.isPresent());
+        Assertions.assertEquals("Geography",response.get().getResultsList().get(0).getCategory());
+    }
+    @Test
+    void shouldGetQuestionWithCorrectCategorySports(){
+        QuizFilterRequest request = new QuizFilterRequest("Sandesh", "hard","21");
+        Optional<QuizFilterResponse> response = quizFilterUseCase.execute(request);
+        assertTrue(response.isPresent());
+        Assertions.assertEquals("Sports",response.get().getResultsList().get(0).getCategory());
+    }
+
+
+
 
 }

@@ -1,10 +1,11 @@
 package com.quizmasterdeluxe.platform.exception;
 
-public class QuizMasterExceptionType {
+public enum QuizMasterExceptionType {
+    PAGE_NOT_FOUND("404","page not found");
     private String code;
     private String message;
 
-    public QuizMasterExceptionType(String code, String message) {
+     QuizMasterExceptionType(String code, String message) {
         this.code = code;
         this.message = message;
     }

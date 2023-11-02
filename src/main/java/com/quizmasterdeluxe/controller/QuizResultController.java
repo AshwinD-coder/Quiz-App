@@ -11,6 +11,7 @@ import io.micronaut.http.annotation.*;
 import io.micronaut.views.ModelAndView;
 import jakarta.inject.Inject;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Controller("/quiz-result")
@@ -35,5 +36,14 @@ public class QuizResultController {
 
         QuizResultResponse execute = quizResultUseCase.execute(quizResultRequest);
         return new ModelAndView<>("quiz-result",execute);
+    }
+
+    @Get("/error/")
+    public ModelAndView error(@QueryValue("errorCode") String errorCode, @QueryValue("errorMessage") String errorMessage) {
+        System.out.println("hello");
+        Map<String, Object> errorModel = new HashMap<>();
+        errorModel.put("errorCode", errorCode);
+        errorModel.put("errorMessage", errorMessage);
+        return new ModelAndView("error", errorModel);
     }
 }

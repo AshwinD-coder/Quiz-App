@@ -12,30 +12,13 @@ public class QuizResultUseCase {
 
     private final QuizFilterUseCase quizFilterUseCase;
 
-
     @Inject
     public QuizResultUseCase(QuizFilterUseCase quizFilterUseCase) {
         this.quizFilterUseCase = quizFilterUseCase;
     }
 
     public QuizResultResponse execute(Map<String, String> quizResultRequest) {
-
-        System.out.println(quizResultRequest);
-
-        // user provided answer   => quizResultRequest
-        // correct answer ...
-
-        System.out.println(TemporaryHolder.get().name());
-
-        Map<String, String> systemQuizResult = new HashMap<>();
-
-        for (QuizFilterResult result : TemporaryHolder.get().resultHolder()) {
-            systemQuizResult.put(result.getQuestion(), result.getCorrectAnswer());
-        }
-
-
-        // correct answer check  => user provided answer
-
+        Map<String, String> systemQuizResult = prepareSystemQuizResult();
 
         int score = 0;
         Map<String, String> playerCorrectAnswer = new HashMap<>();
@@ -43,25 +26,35 @@ public class QuizResultUseCase {
 
         for (Map.Entry<String, String> entry : systemQuizResult.entrySet()) {
             String question = entry.getKey();
-
             String correctAnswer = entry.getValue();
-
             String userAnswer = quizResultRequest.get(question);
 
-            if(correctAnswer.equals(userAnswer))
-            {
+            if (correctAnswer.equals(userAnswer)) {
                 score++;
-                playerCorrectAnswer.put(question,correctAnswer);
-
+                playerCorrectAnswer.put(question, correctAnswer);
+            } else {
+                playerWrongAnswer.put(question, userAnswer);
             }
-            else {
-                playerWrongAnswer.put(question,userAnswer);
-            }
-
         }
 
-return new QuizResultResponse(TemporaryHolder.get().name(),score,playerCorrectAnswer,playerWrongAnswer);
+        return buildQuizResultResponse(score, playerCorrectAnswer, playerWrongAnswer);
     }
 
+    private Map<String, String> prepareSystemQuizResult() {
+        Map<String, String> systemQuizResult = new HashMap<>();
+        for (QuizFilterResult result : TemporaryHolder.get().resultHolder()) {
+            systemQuizResult.put(result.getQuestion(), result.getCorrectAnswer());
+        }
+        return systemQuizResult;
+    }
 
+    private QuizResultResponse buildQuizResultResponse(int score, Map<String, String> playerCorrectAnswer, Map<String, String> playerWrongAnswer) {
+        return new QuizResultResponse(
+                TemporaryHolder.get().name(),
+                score,
+                playerCorrectAnswer,
+                playerWrongAnswer
+        );
+    }
 }
+

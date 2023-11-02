@@ -1,8 +1,8 @@
 package com.quizmasterdeluxe.usecase.quizresult;
 
 
+import com.quizmasterdeluxe.platform.quizholder.TemporaryHolder;
 import com.quizmasterdeluxe.platform.usecase.UseCase;
-import com.quizmasterdeluxe.usecase.quizfilter.QuizFilterResponse;
 import com.quizmasterdeluxe.usecase.quizfilter.QuizFilterResult;
 import com.quizmasterdeluxe.usecase.quizfilter.QuizFilterUseCase;
 import jakarta.inject.Inject;
@@ -32,7 +32,7 @@ public class QuizResultUseCase implements UseCase<QuizResultRequest, QuizResultR
             String question = entry.getKey();
             String correctAnswer = entry.getValue();
             String userAnswer = quizResultRequest.getQuestionAnswer().get(question);
-            if (correctAnswer.equals(userAnswer)) {
+            if ( correctAnswer.equals(userAnswer)) {
                 score++;
                 playerCorrectAnswer.put(question, correctAnswer);
             } else {

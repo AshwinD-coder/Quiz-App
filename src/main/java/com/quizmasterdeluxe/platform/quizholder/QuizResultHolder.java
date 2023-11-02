@@ -1,4 +1,4 @@
-package com.quizmasterdeluxe.usecase.quizresult;
+package com.quizmasterdeluxe.platform.quizholder;
 
 import com.quizmasterdeluxe.usecase.quizfilter.QuizFilterResult;
 

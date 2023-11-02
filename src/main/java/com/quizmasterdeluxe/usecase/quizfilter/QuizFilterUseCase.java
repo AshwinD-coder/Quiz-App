@@ -2,8 +2,8 @@ package com.quizmasterdeluxe.usecase.quizfilter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.quizmasterdeluxe.platform.usecase.UseCase;
-import com.quizmasterdeluxe.usecase.quizresult.QuizResultHolder;
-import com.quizmasterdeluxe.usecase.quizresult.TemporaryHolder;
+import com.quizmasterdeluxe.platform.quizholder.QuizResultHolder;
+import com.quizmasterdeluxe.platform.quizholder.TemporaryHolder;
 import jakarta.inject.Singleton;
 
 import java.io.IOException;

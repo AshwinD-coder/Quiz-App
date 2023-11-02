@@ -1,5 +1,6 @@
 package com.quizmasterdeluxe.usecase.quizresult;
 
+import com.quizmasterdeluxe.platform.usecase.UseCaseResponse;
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.serde.annotation.Serdeable;
 
@@ -7,7 +8,7 @@ import java.util.Map;
 
 @Introspected
 @Serdeable
-public class QuizResultResponse {
+public class QuizResultResponse implements UseCaseResponse {
 
     private String name;
     private int score;

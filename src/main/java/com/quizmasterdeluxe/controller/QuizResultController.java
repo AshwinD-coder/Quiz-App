@@ -1,8 +1,10 @@
 package com.quizmasterdeluxe.controller;
 
 
+import com.quizmasterdeluxe.converter.MapToQuizResultRequest;
 import com.quizmasterdeluxe.platform.exception.QuizMasterException;
 import com.quizmasterdeluxe.platform.exception.QuizMasterExceptionType;
+import com.quizmasterdeluxe.usecase.quizresult.QuizResultRequest;
 import com.quizmasterdeluxe.usecase.quizresult.QuizResultResponse;
 import com.quizmasterdeluxe.usecase.quizresult.QuizResultUseCase;
 import io.micronaut.core.annotation.Nullable;
@@ -27,15 +29,17 @@ public class QuizResultController {
 
     @Post
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public ModelAndView<QuizResultResponse> quizResult(@Body @Nullable Map<String,String> quizResultRequest)
+    public ModelAndView<QuizResultResponse> quizResult(@Body @Nullable Map<String,String> userQuestionsAnswers)
     {
+        QuizResultRequest quizResultRequest = MapToQuizResultRequest.toQuizResultRequest(userQuestionsAnswers);
         if(quizResultRequest == null)
         {
             throw new QuizMasterException(QuizMasterExceptionType.ATLEAST_ONE_ANSWER);
         }
 
-        QuizResultResponse execute = quizResultUseCase.execute(quizResultRequest);
-        return new ModelAndView<>("quiz-result",execute);
+        QuizResultResponse response = quizResultUseCase.execute(quizResultRequest).get();
+
+        return new ModelAndView<>("quiz-result",response);
     }
 
     @Get("/error/")

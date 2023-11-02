@@ -1,5 +1,6 @@
 package com.quizmasterdeluxe.platform.usecase;
 
+import java.util.Map;
 import java.util.Optional;
 
 @FunctionalInterface

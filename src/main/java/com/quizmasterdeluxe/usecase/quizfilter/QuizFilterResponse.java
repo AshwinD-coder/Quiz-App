@@ -2,10 +2,11 @@ package com.quizmasterdeluxe.usecase.quizfilter;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.quizmasterdeluxe.platform.usecase.UseCaseResponse;
 
 import java.util.List;
 
-public class QuizFilterResponse {
+public class QuizFilterResponse implements UseCaseResponse {
 
 
 

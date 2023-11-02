@@ -20,7 +20,7 @@
   <body>
     <div
       class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm ">
-      <h5 class="my-0 mr-md-auto font-weight-normal">Quiz Master Deluxe</h5>
+        <h5 class="my-0 mr-md-auto font-weight-normal"><a href="/" style="text-decoration: none; color: black;"> Quiz Master Deluxe</a></h5>
       <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" href="/">Home</a>
       </nav>
@@ -30,11 +30,10 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <form action="/quiz-filter/start" method="post">
-                    <div class="form-group">
-                        <label for="name" class="form-label">Enter your name</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your Name" required>
-                    </div>
-
+                     <div class="form-group">
+                         <label for="name" class="form-label">Enter your name</label>
+                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter your Name" pattern="[A-Za-z\s]+" title="Only alphabetical characters are allowed." required>
+                     </div>
                     <div class="form-group">
                         <label for="category" class="form-label">Select Category</label>
                         <select class="form-control" name="category" id="category" required>

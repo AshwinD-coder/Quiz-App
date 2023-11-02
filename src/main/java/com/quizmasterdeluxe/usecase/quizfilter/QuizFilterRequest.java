@@ -1,12 +1,13 @@
 package com.quizmasterdeluxe.usecase.quizfilter;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.quizmasterdeluxe.platform.usecase.UseCaseRequest;
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.serde.annotation.Serdeable;
 
 @Introspected
 @Serdeable
-public class QuizFilterRequest {
+public class QuizFilterRequest implements UseCaseRequest {
 
     @JsonProperty("name")
     private String name;

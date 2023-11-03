@@ -17,7 +17,6 @@ public class QuizFilterRequest implements UseCaseRequest {
     private String category;
 
 
-
     public String getName() {
         return name;
     }

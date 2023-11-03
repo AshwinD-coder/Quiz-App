@@ -1,6 +1,5 @@
 package com.quizmasterdeluxe.platform.exception;
 
-import com.quizmasterdeluxe.platform.restresponse.RestResponse;
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
@@ -20,7 +19,6 @@ public class QuizMasterExceptionHandler implements ExceptionHandler<QuizMasterEx
     public HttpResponse<Object> handle(HttpRequest request, QuizMasterException exception) {
         String errorCode = URLEncoder.encode(exception.getType().getCode(), StandardCharsets.UTF_8);
         String errorMessage = URLEncoder.encode(exception.getType().getMessage(), StandardCharsets.UTF_8);
-
         URI errorPageUri = URI.create("/quiz-result/error?errorCode=" + errorCode + "&errorMessage=" + errorMessage);
         return HttpResponse.redirect(errorPageUri);
     }

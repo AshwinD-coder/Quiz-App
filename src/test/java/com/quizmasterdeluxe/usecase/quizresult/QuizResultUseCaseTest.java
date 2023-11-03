@@ -3,7 +3,6 @@ package com.quizmasterdeluxe.usecase.quizresult;
 import com.quizmasterdeluxe.platform.quizholder.QuizResultHolder;
 import com.quizmasterdeluxe.platform.quizholder.TemporaryHolder;
 import com.quizmasterdeluxe.usecase.quizfilter.QuizFilterResult;
-import com.quizmasterdeluxe.usecase.quizfilter.QuizFilterUseCase;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,8 +20,9 @@ class QuizResultUseCaseTest {
     @BeforeEach
     public void setUp() {
         temporaryHolder = new TemporaryHolder();
-        quizResultUseCase = new QuizResultUseCase(new QuizFilterUseCase());
+        quizResultUseCase = new QuizResultUseCase();
     }
+
     @Test
     public void shouldExecuteAllCorrectAnswers() {
         temporaryHolder.set(createMockQuizResultHolder());
@@ -53,7 +53,6 @@ class QuizResultUseCaseTest {
         quizFilterResult.setCorrectAnswer(correctAnswer);
         quizFilterResult.setIncorrectAnswers(incorrectAnswers);
         quizFilterResults.add(quizFilterResult);
-
         return new QuizResultHolder(quizFilterResults, "Ashwin Dhougoda");
     }
 
@@ -70,8 +69,6 @@ class QuizResultUseCaseTest {
         questionAnswer.put("Which company was established on April 1st, 1976 by Steve Jobs, Steve Wozniak and Ronald Wayne?", "Atari"); // Incorrect answer
         return new QuizResultRequest(questionAnswer);
     }
-
-
 
 
 }

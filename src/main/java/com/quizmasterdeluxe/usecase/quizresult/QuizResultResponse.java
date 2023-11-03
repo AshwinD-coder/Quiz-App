@@ -12,8 +12,8 @@ public class QuizResultResponse implements UseCaseResponse {
 
     private String name;
     private int score;
-    private Map<String,String> playerCorrectResult;
-    private Map<String,String> playerWrongResult;
+    private Map<String, String> playerCorrectResult;
+    private Map<String, String> playerWrongResult;
 
     public QuizResultResponse(String name, int score, Map<String, String> playerCorrectResult, Map<String, String> playerWrongResult) {
         this.name = name;

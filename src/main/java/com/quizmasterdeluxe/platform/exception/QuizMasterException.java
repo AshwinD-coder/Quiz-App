@@ -1,6 +1,6 @@
 package com.quizmasterdeluxe.platform.exception;
 
-public class QuizMasterException extends RuntimeException{
+public class QuizMasterException extends RuntimeException {
     QuizMasterExceptionType type;
 
 
@@ -14,7 +14,7 @@ public class QuizMasterException extends RuntimeException{
 
     public QuizMasterException(QuizMasterExceptionType type) {
         super(type.getMessage());
-        this.type=type;
+        this.type = type;
 
     }
 }

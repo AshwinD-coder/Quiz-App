@@ -6,19 +6,13 @@ import com.quizmasterdeluxe.platform.usecase.UseCase;
 import com.quizmasterdeluxe.usecase.quizfilter.QuizFilterResult;
 import com.quizmasterdeluxe.usecase.quizfilter.QuizFilterUseCase;
 import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-
+@Singleton
 public class QuizResultUseCase implements UseCase<QuizResultRequest, QuizResultResponse> {
-
-    private final QuizFilterUseCase quizFilterUseCase;
-
-    @Inject
-    public QuizResultUseCase(QuizFilterUseCase quizFilterUseCase) {
-        this.quizFilterUseCase = quizFilterUseCase;
-    }
 
     @Override
     public Optional<QuizResultResponse> execute(QuizResultRequest quizResultRequest) {

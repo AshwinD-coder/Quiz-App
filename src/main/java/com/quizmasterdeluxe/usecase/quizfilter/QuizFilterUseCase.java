@@ -35,9 +35,8 @@ public class QuizFilterUseCase implements UseCase<QuizFilterRequest, QuizFilterR
     }
 
     private void collectCorrectQuestionAnswer(QuizFilterResponse response) {
-
         List<QuizFilterResult> resultsList = response.getResultsList();
-         String name = response.getName();
+        String name = response.getName();
         TemporaryHolder.set(new QuizResultHolder(resultsList, name));
 
 

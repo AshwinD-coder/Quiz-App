@@ -29,18 +29,13 @@ public class QuizResultController {
 
     @Post
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public ModelAndView<QuizResultResponse> quizResult(@Body @Nullable Map<String,String> userQuestionsAnswers)
-    {
-        if(userQuestionsAnswers == null)
-        {
+    public ModelAndView<QuizResultResponse> quizResult(@Body @Nullable Map<String, String> userQuestionsAnswers) {
+        if (userQuestionsAnswers == null) {
             throw new QuizMasterException(QuizMasterExceptionType.ATLEAST_ONE_ANSWER);
         }
         QuizResultRequest quizResultRequest = MapToQuizResultRequest.toQuizResultRequest(userQuestionsAnswers);
-
-
         QuizResultResponse response = quizResultUseCase.execute(quizResultRequest).get();
-
-        return new ModelAndView<>("quiz-result",response);
+        return new ModelAndView<>("quiz-result", response);
     }
 
     @Get("/error/")

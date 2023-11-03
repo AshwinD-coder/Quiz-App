@@ -9,7 +9,6 @@ import java.util.List;
 public class QuizFilterResponse implements UseCaseResponse {
 
 
-
     @JsonIgnoreProperties("name")
     private String name;
 
@@ -19,6 +18,7 @@ public class QuizFilterResponse implements UseCaseResponse {
 
     @JsonProperty("results")
     private List<QuizFilterResult> resultsList;
+
     public String getName() {
         return name;
     }

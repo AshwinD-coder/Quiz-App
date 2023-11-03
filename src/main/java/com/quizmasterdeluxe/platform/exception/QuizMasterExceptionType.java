@@ -1,7 +1,7 @@
 package com.quizmasterdeluxe.platform.exception;
 
 public enum QuizMasterExceptionType {
-    PAGE_NOT_FOUND("404","page not found"), ATLEAST_ONE_ANSWER( "400","No Answer was submitted" );
+     ATLEAST_ONE_ANSWER( "400","No Answer was submitted" );
     private String code;
     private String message;
 

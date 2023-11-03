@@ -14,6 +14,7 @@ import java.util.Optional;
 @Controller("/quiz-filter")
 public class QuizFilterController {
     private final QuizFilterUseCase quizFilterUseCase;
+
     @Inject
     public QuizFilterController(QuizFilterUseCase quizFilterUseCase) {
         this.quizFilterUseCase = quizFilterUseCase;
@@ -21,17 +22,16 @@ public class QuizFilterController {
 
     @View()
     @Get()
-    public ModelAndView quizFilter(){
-        return new ModelAndView("quiz-filter",null);
+    public ModelAndView quizFilter() {
+        return new ModelAndView("quiz-filter", null);
     }
 
     @Post("/start")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public ModelAndView<QuizFilterResponse> getQuestionsAndRenderTemplate(@Body QuizFilterRequest quizFilterRequest){
+    public ModelAndView<QuizFilterResponse> getQuestionsAndRenderTemplate(@Body QuizFilterRequest quizFilterRequest) {
         Optional<QuizFilterResponse> response = quizFilterUseCase.execute(quizFilterRequest);
-        return new ModelAndView<>("quiz-start",response.get());
+        return new ModelAndView<>("quiz-start", response.get());
     }
-
 
 
 }

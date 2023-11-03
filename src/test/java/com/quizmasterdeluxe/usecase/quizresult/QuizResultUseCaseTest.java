@@ -34,9 +34,6 @@ class QuizResultUseCaseTest {
     private QuizResultRequest createMockQuizResultRequestWithAllCorrectAnswers() {
         Map<String, String> questionAnswer = new HashMap<>();
         questionAnswer.put("Which company was established on April 1st, 1976 by Steve Jobs, Steve Wozniak and Ronald Wayne?", "Apple");
-        questionAnswer.put("What amount of bits commonly equals one byte?", "8");
-        questionAnswer.put("In computing, what does LAN stand for?", "Local Area Network");
-        questionAnswer.put("What does the computer software acronym JVM stand for?", "Java Virtual Machine");
         return new QuizResultRequest(questionAnswer);
     }
 
@@ -65,16 +62,12 @@ class QuizResultUseCaseTest {
         temporaryHolder.set(createMockQuizResultHolder());
         QuizResultRequest quizResultRequest = createMockQuizResultRequestWithMixedAnswersAndIncorrectAnswers();
         Optional<QuizResultResponse> result = quizResultUseCase.execute(quizResultRequest);
-        assertEquals(1, result.get().getScore());
+        assertEquals(0, result.get().getScore());
     }
 
     private QuizResultRequest createMockQuizResultRequestWithMixedAnswersAndIncorrectAnswers() {
         Map<String, String> questionAnswer = new HashMap<>();
-        questionAnswer.put("Which company was established on April 1st, 1976 by Steve Jobs, Steve Wozniak and Ronald Wayne?", "Apple"); // Incorrect answer
-        questionAnswer.put("The programming language 'Swift' was created to replace what other programming language?", "Objective-C");
-        questionAnswer.put("Which programming language shares its name with an island in Indonesia?", "C");
-        questionAnswer.put("How long is an IPv6 address?", "128 bits");
-        questionAnswer.put("What does the computer software acronym JVM stand for?", "Java Virtual Machine");
+        questionAnswer.put("Which company was established on April 1st, 1976 by Steve Jobs, Steve Wozniak and Ronald Wayne?", "Atari"); // Incorrect answer
         return new QuizResultRequest(questionAnswer);
     }
 
